@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ProjectMapper">
+
+    <select id="findCnt" resultType="integer">
+        SELECT COUNT(*) from project
+    </select>
+
+    <select id="checkName" resultType="integer" parameterType="java.lang.String">
+        SELECT COUNT(*) from project where project_name=#{pname};
+    </select>
+
+    <select id="onProject" resultType="integer">
+        SELECT COUNT(*) from project WHERE status_radio = '进行中'
+    </select>
+
+    <select id="onProjectEntity" resultType="com.example.entity.Project">
+        SELECT * from project WHERE status_radio = '进行中'
+    </select>
+
+    <select id="checkUpdate" resultType="integer" parameterType="java.lang.String">
+        SELECT COUNT(*) from project WHERE project_name!=#{oldname} AND project_name=#{newname}
+    </select>
+
+
+
+
+</mapper>

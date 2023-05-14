@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ProgressMapper">
+
+    <select id="getAllProgress" resultType="com.example.entity.Progress" >
+        SELECT progress.* from progress,project WHERE project_rel=project_name AND status_radio='进行中'
+    </select>
+
+    <select id="getOngoing" resultType="integer" >
+        SELECT COUNT(*) FROM progress,project WHERE project_rel=project_name AND status_radio='进行中'
+    </select>
+
+    <select id="getSumProgress" resultType="integer" >
+        SELECT sum(proportion) from progress,project WHERE project_rel=project_name AND status_radio='进行中'
+    </select>
+
+
+</mapper>
